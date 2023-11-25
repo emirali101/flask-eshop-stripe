@@ -1,0 +1,39 @@
+{% for message in get_flashed_messages() %}
+  <div class="flash" id="flash">{{ message }}</div>
+
+{% endfor %}
+
+{% include "header.html" %}
+    <div class="sort_form">
+        <form name="sort_form" action="{{ url_for('home') }}" method="post">
+        <Select onchange="sort_form.submit()" name="sortby">
+        <option value="">Sort by default</option>
+        <option value="id" {% if selected=='id' %}selected{%endif %}>Last added</option>
+        <option value="price" {% if selected=='price' %}selected{%endif %}>Sort by price</option>
+        <option value="title" {% if selected=='title' %}selected{%endif %}>Sort by name</option>
+        </select>
+    </form>
+    </div>
+
+    <div class="content">
+        {% for id in all_id | sort(attribute=sorting, reverse=reverse) %}
+        <div class="card">
+            <div class="product">
+                <h2>{{ id.title}}</h2>
+            <p class="text">{{ id.description }} </p>
+            <h4 class="text">Price: € {{ "%0.2f" % (id.price) }} </h4>
+            <a class="buy_button" href="{{ url_for('add_chart', num=id.id) }}">Add to Cart</a>
+            </div>
+
+            <div class="img_product">
+            <img class="img_product" src="/static/images/img_product{{ id.id }}.jpg">
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+
+
+</body>
+
+{% include "footer.html" %}

@@ -1,0 +1,25 @@
+{% include "header.html" %}
+
+<div class="cart">
+    <div class="cart_div">
+     {% if success %}
+      <p>Thank you for your purchase. Your order will be shipped soon.</p>
+      {% else %}
+        {% for message in form.name.errors %}
+        <div class="flash">{{ message }}</div>
+        {% endfor %}
+        {% for message in form.email.errors %}
+        <div class="flash">{{ message }}</div>
+        {% endfor %}
+        {% for message in form.country.errors %}
+        <div class="flash">{{ message }}</div>
+        {% endfor %}
+        {% for message in form.shipping_address.errors %}
+        <div class="flash">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+    </div>
+
+</div>
+
+{% include "footer.html" %}

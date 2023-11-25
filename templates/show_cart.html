@@ -1,0 +1,49 @@
+{% include "header.html" %}
+    <div class="cart">
+    <h2>Your cart:</h2>
+    {% for item in cart: %}
+    <div class="cart_div">
+     <div class="cart_product">
+    <h4>{{ item["title"] }}</h4>
+     </div>
+
+     <div class="cart_product">
+    <h4>Price: € {{ "%0.2f" % (item["price"]) }} </h4>
+     </div>
+     <div class="remove_product">
+    <a class="remove_button" href="{{ url_for('remove_item', num=item['id']) }}">Remove </a>
+     </div>
+     </div>
+    {% endfor %}
+    <h3>Your total: € {{ "%0.2f" % (cart |sum(attribute='price')) }}</h3>
+    <div class="cart_div">
+     {% if success %}
+      <p>Thank you for your purchase. Your order will be shipped soon.</p>
+      {% else %}
+        {% for message in form.name.errors %}
+        <div class="flash">{{ message }}</div>
+        {% endfor %}
+        {% for message in form.email.errors %}
+        <div class="flash">{{ message }}</div>
+        {% endfor %}
+        {% for message in form.country.errors %}
+        <div class="flash">{{ message }}</div>
+        {% endfor %}
+        {% for message in form.shipping_address.errors %}
+        <div class="flash">{{ message }}</div>
+        {% endfor %}
+        <form action="{{ url_for('make_order') }}" method="post">
+            {{ form.hidden_tag() }}
+            {{ form.name }}
+            {{ form.email }}
+            {{ form.country }}
+            {{ form.shipping_address }}
+            {{ form.price_total(value=( "%0.2f" % cart |sum(attribute="price"))) }}
+            {{ form.submit }}
+        </form>
+        {% endif %}
+    </div>
+
+</body>
+
+{% include "footer.html" %}

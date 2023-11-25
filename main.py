@@ -8,9 +8,9 @@ from functions import stripe_charge
 
 
 app = Flask(__name__)
-#app.config["SECRET_KEY"] = os.environ["SECRET_KEY"]
+app.config["SECRET_KEY"] = os.environ["SECRET_KEY"]
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ["SQLALCHEMY_DATABASE_URI"]
-#stripe.api_key = os.environ["STRIPE_SECRET"]
+stripe.api_key = os.environ["STRIPE_SECRET"]
 
 
 db.init_app(app)

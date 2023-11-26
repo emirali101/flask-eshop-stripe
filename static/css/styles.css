@@ -213,3 +213,44 @@ select {
   border-color: white;
   #border: none;
 }
+
+@media screen and (max-width: 830px) {
+  ul {
+    font-size: 24px;
+  }
+  .card {
+    width: 600px;
+  }
+  .card .text {
+    font-size: 24px;
+  }
+  .card h2 {
+    font-size: 26px;
+  }
+  .product {
+    height: 350px;
+    width: 200px;
+  }
+  .buy_button {
+    padding: 15px 12px;
+    height: 27px;
+    width: 120px;
+  }
+  .img_product {
+    height: 330px;
+  }
+  select {
+    font-size: 16px;
+  }
+  form input {
+    height: 50px;
+  }
+  form textarea {
+    height: 150px;
+  }
+  form input#submit {
+    width: 133px;
+    height: 50px;
+  }
+
+}

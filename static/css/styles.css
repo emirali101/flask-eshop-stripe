@@ -216,28 +216,34 @@ select {
 
 @media screen and (max-device-width: 830px) {
   ul {
-    font-size: 24px;
+    font-size: 30px;
+    display: flex;
+    justify-content: space-evenly;
   }
   .card {
-    width: 600px;
+    width: 75vw;
+    height: 30vh
   }
   .card .text {
-    font-size: 24px;
+    font-size: 32px;
   }
   .card h2 {
-    font-size: 26px;
+    font-size: 40px;
   }
   .product {
-    height: 350px;
-    width: 200px;
+    display: flex;
+    flex-flow: column;
+    height: 80%;
+    width: 50%;
   }
   .buy_button {
     padding: 15px 12px;
     height: 27px;
-    width: 120px;
+    width: 80%;
+    font-size: 24px;
   }
   .img_product {
-    height: 330px;
+    height: 90%;
   }
   select {
     font-size: 16px;
@@ -251,6 +257,10 @@ select {
   form input#submit {
     width: 133px;
     height: 50px;
+  }
+  .flash {
+    font-weight: 600;
+    top: 140px;
   }
 
 }
